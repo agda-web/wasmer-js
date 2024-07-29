@@ -25,7 +25,7 @@ pub(crate) fn input_pipe() -> (Pipe, WritableStream) {
     let stream = WritableStream::new_with_underlying_sink_and_strategy(
         sink.unchecked_ref(),
         web_sys::QueuingStrategy::new()
-            .high_water_mark(256.0)
+            .high_water_mark(8192.0)
             .size(callback.into_js_value().unchecked_ref()),
     )
     .unwrap();
@@ -121,7 +121,7 @@ pub(crate) fn output_pipe() -> (Pipe, ReadableStream) {
     let stream = ReadableStream::new_with_underlying_source_and_strategy(
         source.unchecked_ref(),
         web_sys::QueuingStrategy::new()
-            .high_water_mark(256.0)
+            .high_water_mark(8192.0)
             .size(callback.into_js_value().unchecked_ref()),
     )
     .unwrap();
