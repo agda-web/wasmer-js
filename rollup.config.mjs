@@ -11,7 +11,9 @@ import fs from "fs";
 
 const LIBRARY_NAME = "WasmerSDK"; // Change with your library's name
 const EXTERNAL = [
-  "./pkg/"
+  "./pkg/",
+  "node:fs/promises",
+  "node:path",
 ]; // Indicate which modules should be treated as external
 const GLOBALS = {}; // https://rollupjs.org/guide/en/#outputglobals
 
@@ -19,7 +21,7 @@ const entries = [
   'src-js/index.ts',
   'src-js/node.ts',
   'src-js/unpkg.ts',
-  'src-js/wasm-inlined.ts',
+  // 'src-js/wasm-inlined.ts',
 ]
 
 const banner = `/*!

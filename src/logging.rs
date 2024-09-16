@@ -47,6 +47,7 @@ pub fn initialize_logger(filter: Option<String>) -> Result<(), crate::utils::Err
         .with_env_filter(filter)
         .with_span_events(FmtSpan::CLOSE)
         .without_time()
+        .with_ansi(false)
         .try_init()
         .map_err(|e| anyhow::anyhow!(e))?;
 
